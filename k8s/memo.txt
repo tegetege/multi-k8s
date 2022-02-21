@@ -1,0 +1,28 @@
+# スタート
+$ minikube start
+# ストップ
+$ minikube stop
+# インスタンスの削除
+$ minkube delete
+
+# minikubeで作ったpodのipを調べる
+# (minikubeを利用している場合に必要?)
+# 参考: https://stackoverflow.com/questions/63283823/when-minikube-on-mac-is-asked-for-url-why-does-it-instead-start-a-service-in-a
+$ minikube service client-cluster-ip-service
+
+# Secretを作る
+$ kubectl create secret generic <secret_name> --from-literal key=value
+
+
+# MacOS上ではIngressが機能しないので、機能させたい場合はvirtualbox上でminikubeを起動する必要あり
+# https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/learn/lecture/21475302#content
+$ minikube start --driver=virtualbox
+
+# Ingress Nginx がインストールされているかをを確認する
+# https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/learn/lecture/19243394#content
+
+# Nginx ingressを取り入れるコマンド
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
+
+# minikubeでingressを使える様にするコマンド
+$ minikube addons enable ingress
