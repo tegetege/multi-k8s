@@ -51,7 +51,7 @@ kubeconfig entry generated for multi-cluster.
 @cloudshell:~ $ kubectl get pods
 
 ## k8sで利用するsecretの設定
-@cloudshell:~ $ kubectl create secret generic pgpassword --from-literal PGPASSWORD= <L285を見る>
+@cloudshell:~ $ kubectl create secret generic pgpassword --from-literal POSTGRES_PASSWORD= <L285を見る>
 
 ## helmのインストール
 @cloudshell:~ $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
