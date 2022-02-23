@@ -35,3 +35,25 @@ $ travis login --github-token YOUR_PERSONAL_TOKEN --com
 
 # service-account.jsonをアップローするときのコマンド
 $ travis encrypt-file service-account.json -r USERNAME/REPO --com
+
+
+
+
+# GCP上で準備するもの
+## gcloudでクラスタにアクセスする
+@cloudshell:~ $ gcloud config set project <プロジェクトの名前>
+Updated property [core/project].
+@cloudshell:~ $ gcloud config set compute/zone <インスタンスのある場所>
+Updated property [compute/zone].
+@cloudshell:~ $ gcloud container clusters get-credentials <クラスターの名前>
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for multi-cluster.
+@cloudshell:~ $ kubectl get pods
+
+## k8sで利用するsecretの設定
+@cloudshell:~ $ kubectl create secret generic pgpassword --from-literal PGPASSWORD= <L285を見る>
+
+## helmのインストール
+@cloudshell:~ $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+@cloudshell:~ $ chmod 700 get_helm.sh
+@cloudshell:~ $ ./get_helm.sh
