@@ -26,3 +26,12 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/co
 
 # minikubeでingressを使える様にするコマンド
 $ minikube addons enable ingress
+
+
+# ruby-doceker上で動かしているtraviceでログインするときのコマンド
+# PERSONAL_TOKEN はgithubから取ってくる
+# https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token
+$ travis login --github-token YOUR_PERSONAL_TOKEN --com
+
+# service-account.jsonをアップローするときのコマンド
+$ travis encrypt-file service-account.json -r USERNAME/REPO --com
